@@ -1,0 +1,69 @@
+.botonesTabla{
+			width:30%;
+		}
+		:root {
+		--my-main-color: gray;
+		--my-start-color: yellow;
+		}
+	.text-speed {
+		color: white;
+		font-weight: 600;
+		font-size: 24px;
+		padding: 0;
+		margin: 0;
+		transform: translate(-0%, -110%);
+	}
+	.sensor-uno{
+		position: absolute;
+		top: 5em;
+		left: 4em;
+		border-radius: 50%;
+	}
+	.sensor-tres{
+		position: absolute;
+		top: 6em;
+		border-radius: 50%;
+	}
+	.sensor-dos{
+		position: absolute;
+		bottom: 8em;
+		right: 3em;
+		border-radius: 50%;
+	}
+	.trafficLight {
+		background-color: black;
+		width: 95%;
+		height: 20vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px 5px;
+		border-radius: 10px;
+	}
+	.trafficLight span {
+		width: 97%;
+		height: 100%;
+		border-radius: 100%;
+		background-color: gray;
+		animation-duration: 3s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+	.colorful {
+		animation-name: colorful;
+	}
+	@keyframes colorful {
+		0%,
+		33% {
+		  background-color: var(--my-main-color);
+		}
+		34%,
+		66% {
+		  background-color: var(--my-start-color) ;
+		}
+		67%,
+		100% {
+		  background-color: var(--my-main-color);
+		}
+	}
