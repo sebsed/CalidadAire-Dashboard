@@ -5,7 +5,7 @@
 $fechaActual = date('Y-m-d');
 
 // Incluir archivo conn
-include('conexion.php');
+include('db-historico.php');
 ?>
 
 <html lang="en">
@@ -27,7 +27,7 @@ include('conexion.php');
         </div>
         <div class = "container" style="margin-top: 30px;">
             <h5 style="margin-top: 30px;">Selección de fechas y sensor</h5>
-            <form method="post" action="historico.php?act=conexion">
+            <form method="post" action="historico.php?act=db-historico">
                 <div class = "row">
                     <div class = "col-sm text-center">
                         <label>Ingresa la fecha inicial:
