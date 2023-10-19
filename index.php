@@ -1,6 +1,6 @@
 <?php
 
-include('database.php');
+include('db/database.php');
 
 //variables de particulas
 ///valor mas alto de las variables

@@ -5,7 +5,7 @@
 $fechaActual = date('Y-m-d');
 
 // Incluir archivo conn
-include('db-historico.php');
+include('db/db-historico.php');
 ?>
 
 <html lang="en">
