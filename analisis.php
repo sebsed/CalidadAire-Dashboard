@@ -5,7 +5,7 @@
 $fechaActual = date('Y-m-d');
 
 // Incluir archivo conn
-include('conexion.php');
+include('db-analisis.php');
 
 ?>
 
@@ -25,9 +25,11 @@ include('conexion.php');
             <h3 style="margin-top: 30px;">Análisis</h3>
             <p style="margin-top: 10px;">En esta pestaña es posible desplegar gráficas comparando métricas relevantes para observar su correlación.
             Selecciona una fecha inicial, una fecha final y el par de métricas que deseas visualizar.</p>
+            <p style="margin-top: 10px;">Los datos están normalizados entre 0 y 1 con la finalidad de contar con una comparación congruente. 
+            En caso de desear acceder a los datos sin normalizar, consultar la pestaña "Histórico".</p>
         </div>
         <div class = "container" style="margin-top: 30px;">
-            <form method="post" action="analisis.php?act=conexion">
+            <form name="sumbitForm" method="post" action="analisis.php?act=db-analisis">
                 <div class = "row">
                     <h5 style="margin-top: 30px;">Selección de fechas y sensor</h5>
                     <div class = "col-sm text-center">
@@ -115,8 +117,8 @@ include('conexion.php');
 
         <!--- Gráfica --->
         <div class = "container" style="margin-top: 50px;">
-            <?php if(isset($_POST['submit'])){ ?>
-            <canvas id="comp_chart"></canvas>
+            <?php if(isset($_POST['submit']) && isset($_POST['met_1']) && isset($_POST['met_2'])){ ?>
+                <canvas id="comp_chart"></canvas>
             <?php } ?>
         </div>
 
@@ -125,17 +127,25 @@ include('conexion.php');
 
         <!---Gráfica--->
         <script>
+            
             new Chart(document.getElementById("comp_chart"), {
                 type : 'line',
                 data : {
-                    labels : <?php echo json_encode($met1Data); ?>,
+                    labels : <?php echo json_encode($timeData); ?>,
                     datasets : [
                             {
-                                data : <?php echo json_encode($met2Data); ?>,
-                                label : "monoxido",
-                                borderColor : "#3cba9f",
+                                data : <?php echo json_encode($normalizedData1); ?>,
+                                label : met1Title,
+                                borderColor : "#8ca083",
                                 fill : false
-                            }]
+                            },
+                            {
+                                data : <?php echo json_encode($normalizedData2); ?>,
+                                label : met2Title,
+                                borderColor : "#a78ab7",
+                                fill : false
+                            }
+                        ]
                 },
                 options : {
                     plugins: {
