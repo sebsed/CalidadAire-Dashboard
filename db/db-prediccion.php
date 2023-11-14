@@ -1,7 +1,6 @@
 <?php
 
 function calcularCalidad($pm25, $pm10, $ozono, $co, $temperatura, $humedad){
-    echo 'DENTRO DE FUNCION';
     //EVALUACIÓN PARA P.M. 2.5
     if($pm25 < 12) {
         $pm25eval = 1; // Bueno
@@ -68,14 +67,10 @@ function calcularCalidad($pm25, $pm10, $ozono, $co, $temperatura, $humedad){
 		
 		if($total < 11) {
 			echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería favorable dados los datos introducidos. Todas las personas pueden realizar actividades al aire libre."); } </script>'; 
-            echo '<p>La calidad del aire sería favorable dados los datos introducidos. Todas las personas pueden realizar actividades al aire libre.</p>';
-            return 'buena';
 			}else if($total >= 11 && $total < 16){
 			    echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería moderada dados los datos introducidos. Se recomienda que los grupos sensibles eviten realizar actividades al aire libre."); } </script>'; 
-                echo '<p>La calidad del aire sería media.</p>';
 				}else if($total >= 16){
                     echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería mala dados los datos introducidos. Todas las personas deben evitar realizar actividades al aire libre."); } </script>'; 
-                    echo '<p>La calidad del aire sería mala</p>';
 					}
 }
 
@@ -92,7 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['submit'])){
-        echo 'Hola a todos';
         echo calcularCalidad($_POST['pm25'],$_POST['pm10'],$_POST['o3'],$_POST['co'],$_POST['temp'],$_POST['hum']);
     }
 }

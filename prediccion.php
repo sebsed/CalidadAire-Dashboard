@@ -1,5 +1,12 @@
 <!doctype html>
 
+<?php
+
+// Incluir archivo conexión
+include('db/db-prediccion.php');
+
+?>
+
 <html>
     <head>
 		<meta charset="utf-8">
