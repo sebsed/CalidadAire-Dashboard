@@ -79,7 +79,11 @@ include('db/db-prediccion.php');
                     <input type="submit" class="btn btn-primary btn-lg" name="submit" value="Obtener estimación"/>
                 </div>
                 <?php } ?>
+
             </form>
+        </div>
+        <div class = "container" style="margin-top: 30px;">
+            <?php echo $salidaFuncion ?>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
