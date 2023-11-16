@@ -63,16 +63,13 @@ function calcularCalidad($pm25, $pm10, $ozono, $co, $temperatura, $humedad){
 		
 		//Evaluacion de la calidad de aire
 		$total = $pm25eval + $pm10eval + $ozonoeval + $coeval + $temperaturaeval + $humedadeval;
-		$x = ($total * 6.6666666666666666666666666666667) + (-6.6666666666666666666666666666667*21+100);
+		$x = ($total * 6.6666666666666666666666666666667) + ((-6.6666666666666666666666666666667*21)+100);
 		
 		if($total < 11) {
-			//echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería favorable dados los datos introducidos, con índice de '.$x.'. Todas las personas pueden realizar actividades al aire libre."); } </script>'; 
             return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería favorable dados los datos introducidos, con índice de '.$x.'. Todas las personas pueden realizar actividades al aire libre</p>';
 			}else if($total >= 11 && $total < 16){
-			    //echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería moderada dados los datos introducidos, con índice de '.$x.'. Se recomienda que los grupos sensibles eviten realizar actividades al aire libre."); } </script>'; 
                 return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería moderada dados los datos introducidos, con índice de '.$x.'. Se recomienda que los grupos sensibles eviten realizar actividades al aire libre.</p>';
 				}else if($total >= 16){
-                    //echo '<script type="text/javascript"> window.onload = function () { alert("La calidad del aire sería mala dados los datos introducidos, con índice de '.$x.'. Todas las personas deben evitar realizar actividades al aire libre."); } </script>'; 
                     return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería mala dados los datos introducidos, con índice de '.$x.'. Todas las personas deben evitar realizar actividades al aire libre.</p>';
 					}
 }
@@ -84,7 +81,7 @@ function obtenerCalidadFecha($fechaLimite){
     $username = '';
     $password = '';
 
-    $query = "SELECT AVG(PM25) AS promPM25, AVG(PM10) AS promPM10, AVG(Ozone) AS promOzone, AVG(Carbon_Mono) AS promCarbon, AVG(Temperature) AS promTemp, AVG(Humidity) AS promHum FROM report WHERE Timestamp >= :fecha";
+    $query = "SELECT AVG(PM25) AS promPM25, AVG(PM10) AS promPM10, AVG(Ozone) AS promOzone, AVG(Carbon_Mono) AS promCarbon, AVG(Temperature) AS promTemp, AVG(Humidity) AS promHum FROM newreport WHERE Timestamp >= :fecha";
 
     // Ejecutar el query
     try {
@@ -95,7 +92,6 @@ function obtenerCalidadFecha($fechaLimite){
         $stmt->bindParam(':fecha', $fechaLimite, PDO::PARAM_STR);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //echo $data;
     
     } catch (PDOException $e) {
         echo "Error de conexión: " . $e->getMessage();
@@ -115,44 +111,34 @@ function obtenerCalidadFecha($fechaLimite){
     }
 
     // Llamar la funcion para evaluar calidad del aire
-    //echo $promPM25[0]."\n";
-    //echo $promOzone[0]."\n";
-    //echo $promTemp[0]."\n";
     return calcularCalidad($promPM25[0],$promPM10[0],$promOzone[0],$promCarbon[0],$promTemp[0],$promHum[0]);
 
 }
 
-
-
 // Si se ha hecho clic en el botón submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if($_POST['opcionSelec'] == 1 && isset($_POST['subOpcion'])){
-        // ***** Se tiene que cambiar por la fecha actual cuando se tenga la base de datos final
-        // Por ahora, se limita a la ultima fecha obtenida en el reporte ($fecha)
-        $fecha_actual = date('Y-m-d');
-        $fecha = strtotime('2023-08-14');
-        $fecha = date('Y-m-d', $fecha);
 
+    // !!!!!!!!!!!! Se tiene que cambiar por la fecha actual cuando se tenga la base de datos final !!!!!!!!!!!!
+    // Por ahora, se limita a la ultima fecha obtenida en el reporte ($fecha)
+    $fecha_actual = date('Y-m-d');
+    $fecha = strtotime('2023-08-14');
+    $fecha = date('Y-m-d', $fecha);
+
+    // Estimación a 1 día
+    if($_POST['opcionSelec'] == 1 && isset($_POST['subOpcion'])){
         $fecha_limite = strtotime('-1 day', strtotime($fecha));
         $fecha_limite = date('Y-m-d', $fecha_limite);
-        //echo $fecha_limite;
         $salidaFuncion = obtenerCalidadFecha($fecha_limite);
     }
 
+    // Estimación a 3 días
     if($_POST['opcionSelec'] == 2){
-        // ***** Se tiene que cambiar por la fecha actual cuando se tenga la base de datos final
-        // Por ahora, se limita a la ultima fecha obtenida en el reporte ($fecha)
-        $fecha_actual = date('Y-m-d');
-        $fecha = strtotime('2023-08-14');
-        $fecha = date('Y-m-d', $fecha);
-
         $fecha_limite = strtotime('-3 day', strtotime($fecha));
         $fecha_limite = date('Y-m-d', $fecha_limite);
-        //echo $fecha_actual;
-        //echo $fecha_limite;
         $salidaFuncion = obtenerCalidadFecha($fecha_limite);
     }
 
+    // Estimación con datos
     if (isset($_POST['submit'])){
         $salidaFuncion = calcularCalidad($_POST['pm25'],$_POST['pm10'],$_POST['o3'],$_POST['co'],$_POST['temp'],$_POST['hum']);
     }
