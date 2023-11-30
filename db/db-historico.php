@@ -40,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $query .= ", Humidity ";
             }
             // Completar query
-            $query .= "FROM report WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
-            //echo $query;
+            $query .= "FROM newreport WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
 
             try {
                 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -52,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bindParam(':fecha_superior', $fecha_superior, PDO::PARAM_STR);
                 $stmt->execute();
                 $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                //echo $data;
             
             } catch (PDOException $e) {
                 echo "Error de conexión: " . $e->getMessage();

@@ -43,7 +43,7 @@ include('db/db-analisis.php');
                         </label>
                     </div>
                     <div class = "col-sm text-center">
-                        <select class="form-select" aria-label="Default select example" name="sensorSelec">
+                        <select class="form-select" name="sensorSelec">
                             <option selected>Seleccione sensor</option>
                             <option value="1">Sensor 1</option>
                             <option value="2">Sensor 2</option>
