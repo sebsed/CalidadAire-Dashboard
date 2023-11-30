@@ -64,14 +64,8 @@ function calcularCalidad($pm25, $pm10, $ozono, $co, $temperatura, $humedad){
 		//Evaluacion de la calidad de aire
 		$total = $pm25eval + $pm10eval + $ozonoeval + $coeval + $temperaturaeval + $humedadeval;
 		$x = ($total * 6.6666666666666666666666666666667) + ((-6.6666666666666666666666666666667*21)+100);
-		
-		if($total < 11) {
-            return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería favorable dados los datos introducidos, con índice de '.$x.'. Todas las personas pueden realizar actividades al aire libre</p>';
-			}else if($total >= 11 && $total < 16){
-                return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería moderada dados los datos introducidos, con índice de '.$x.'. Se recomienda que los grupos sensibles eviten realizar actividades al aire libre.</p>';
-				}else if($total >= 16){
-                    return '<h3 style="margin-top: 30px;">Resultados</h3><p style="margin-top: 10px;">La calidad del aire sería mala dados los datos introducidos, con índice de '.$x.'. Todas las personas deben evitar realizar actividades al aire libre.</p>';
-					}
+
+        return array($total, $x);
 }
 
 function obtenerCalidadFecha($fechaLimite){
@@ -128,19 +122,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if($_POST['opcionSelec'] == 1 && isset($_POST['subOpcion'])){
         $fecha_limite = strtotime('-1 day', strtotime($fecha));
         $fecha_limite = date('Y-m-d', $fecha_limite);
-        $salidaFuncion = obtenerCalidadFecha($fecha_limite);
+        list($totalCalculado, $indiceCalidad) = obtenerCalidadFecha($fecha_limite);
+        $mostrar = True;
     }
 
     // Estimación a 3 días
     if($_POST['opcionSelec'] == 2){
         $fecha_limite = strtotime('-3 day', strtotime($fecha));
         $fecha_limite = date('Y-m-d', $fecha_limite);
-        $salidaFuncion = obtenerCalidadFecha($fecha_limite);
+        list($totalCalculado, $indiceCalidad) = obtenerCalidadFecha($fecha_limite);
+        $mostrar = True;
     }
 
     // Estimación con datos
     if (isset($_POST['submit'])){
-        $salidaFuncion = calcularCalidad($_POST['pm25'],$_POST['pm10'],$_POST['o3'],$_POST['co'],$_POST['temp'],$_POST['hum']);
+        list($totalCalculado, $indiceCalidad) = calcularCalidad($_POST['pm25'],$_POST['pm10'],$_POST['o3'],$_POST['co'],$_POST['temp'],$_POST['hum']);
+        $mostrar = True;
     }
 }
 
