@@ -1,5 +1,6 @@
 # CalidadAire-Dashboard
 Desarrollo de dashboard para desplegar información de calidad del aire.
+
 **Desarrollado por:** Sergio Javier Flores y Sebastián Sedano Castañeda.
 ## Descripción de archivos
 `index.php`:
