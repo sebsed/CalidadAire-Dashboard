@@ -17,7 +17,8 @@ $rowPromedio = $result->fetch_assoc();
 $promedioPM25 = $rowPromedio['promedioPMDos'];
 $promedioPM10 = $rowPromedio['promedioPMDiez'];
 $promedioMonoxido = $rowPromedio['promedioMonoxido'] /450;
-$promedioOzono = $rowPromedio['promedioOzono'];
+$promedioOzono = $rowPromedio['promedioOzono'] / 450;
+
 
 // $promedioPM25 = 50;
 // $promedioPM10 = 170;
@@ -29,6 +30,7 @@ $normalizarPM25 = $promedioPM25 / $maximoPM25;
 $normalizarPM10 = $promedioPM10 / $maximoPM10;
 $normalizarMonoxido = $promedioMonoxido / $maximoMonoxido;
 $normalizarOzono = $promedioOzono / $maximoOzono;
+//echo $normalizarPM25 . "aaaa" . $normalizarPM10 . "aaaa" .$normalizarMonoxido . "aaaa" .$normalizarOzono;
 
 //obtener el mas grande
 $array = compact('normalizarPM25', 'normalizarPM10', 'normalizarMonoxido', 'normalizarOzono');

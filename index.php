@@ -21,7 +21,7 @@ $valorTemperatura = bcdiv($row['Temperature'], 1, 2);;
 $maximoPM25 = 147; 
 $maximoPM10 = 235; 
 $maximoMonoxido = 15.5; 
-$maximoOzono = 0.250; 
+$maximoOzono = 0.114; 
 $maximoHumedad = 100; 
 $maximoTemperatura = 60; 
 
