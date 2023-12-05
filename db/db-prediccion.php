@@ -75,7 +75,7 @@ function obtenerCalidadFecha($fechaLimite){
     $username = '';
     $password = '';
 
-    $query = "SELECT AVG(PM25) AS promPM25, AVG(PM10) AS promPM10, AVG(Ozone) AS promOzone, AVG(Carbon_Mono) AS promCarbon, AVG(Temperature) AS promTemp, AVG(Humidity) AS promHum FROM newreport WHERE Timestamp >= :fecha";
+    $query = "SELECT AVG(PM25) AS promPM25, AVG(PM10) AS promPM10, AVG(Ozone) AS promOzone, AVG(Carbon_Mono) AS promCarbon, AVG(Temperature) AS promTemp, AVG(Humidity) AS promHum FROM report WHERE Timestamp >= :fecha";
 
     // Ejecutar el query
     try {
