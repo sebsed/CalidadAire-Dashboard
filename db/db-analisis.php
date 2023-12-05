@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         else{
             // Hacer query de las métricas seleccionadas
             if(isset($_POST['met_1']) && isset($_POST['met_2'])){
-                $query = "SELECT Timestamp, ".$_POST['met_1'].", ".$_POST['met_2']." FROM newreport WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
+                $query = "SELECT Timestamp, ".$_POST['met_1'].", ".$_POST['met_2']." FROM report WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
             }
 
             try {

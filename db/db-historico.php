@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $query .= ", Humidity ";
             }
             // Completar query
-            $query .= "FROM newreport WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
+            $query .= "FROM report WHERE Timestamp BETWEEN :fecha_inferior AND :fecha_superior";
 
             try {
                 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
