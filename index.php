@@ -171,27 +171,27 @@ include('calculoValorSemaforo.php');
 						<tr>
 						  <th scope="row">
 							<button class="btn btn-primary botonesTabla" type="submit" name="boton1">PM 2.5</button></th>
-							<td><?= $valorPM25 ?></td>
+							<td><?php echo $valorPM25 . " ppm" ?></td>
 						</tr>
 						<tr>
 						  <th scope="row"><button class="btn btn-primary botonesTabla" type="submit" name="boton2">PM 10</button></th>
-						  <td><?= $valorPM10 ?></td>
+						  <td><?php echo$valorPM10 . " ppm"?></td>
 						</tr>
 						<tr>
 						  <th scope="row"><button class="btn btn-primary botonesTabla" type="submit" name="boton3">Monoxido de carbono</button></th>
-						  <td><?= $valorMonoxido ?></td>
+						  <td><?php echo $valorMonoxido . " ppm"?></td>
 						</tr>
 						<tr>
 						  <th scope="row"><button class="btn btn-primary botonesTabla" type="submit" name="boton4">Ozono</button></th>
-						  <td><?= $valorOzono ?></td>
+						  <td><?php echo $valorOzono . " ppm"?></td>
 						</tr>
 						<tr>
 						  <th scope="row"><button class="btn btn-primary botonesTabla" type="submit" name="boton5">Humedad</button></th>
-						  <td><?= $valorHumedad ?></td>
+						  <td><?php echo $valorHumedad . " %"?></td>
 						</tr>
 						<tr>
 						  <th scope="row"><button class="btn btn-primary botonesTabla" type="submit" name="boton6">Temperatura</button></th>
-						  <td><?= $valorTemperatura ?></td>
+						  <td><?php echo $valorTemperatura . " C"?></td>
 						</tr>
 					  </tbody>
 					</table>
@@ -242,15 +242,15 @@ include('calculoValorSemaforo.php');
 												Fecha de medicion
 											</div>
 											<div class = "col 6">
-												<?= $fechaReciente ?> 
+												<? $fechaReciente ?> 
 											</div>
 										</div>
 										<div class = "row">
 											<div class = "col 6">
-												PM 2.5
+												PM 2.php echo5
 											</div>
 											<div class = "col 6">
-												<?= $valorPM25 ?> 
+												<?php echo $valorPM25 . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -258,7 +258,7 @@ include('calculoValorSemaforo.php');
 												PM 10
 											</div>
 											<div class = "col 6">
-												<?= $valorPM10 ?> 
+												<?php echo $valorPM10 . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -266,7 +266,7 @@ include('calculoValorSemaforo.php');
 												Monoxido de carbono
 											</div>
 											<div class = "col 6">
-												<?= $valorMonoxido ?> 
+												<?php echo $valorMonoxido . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -274,7 +274,7 @@ include('calculoValorSemaforo.php');
 												Nitrogeno
 											</div>
 											<div class = "col 6">
-												<?= $valorOzono ?> 
+												<?php echo $valorOzono . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -282,7 +282,7 @@ include('calculoValorSemaforo.php');
 												Humedad
 											</div>
 											<div class = "col 6">
-												<?= $valorHumedad ?> 
+												<?php echo $valorHumedad . " %"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -290,7 +290,7 @@ include('calculoValorSemaforo.php');
 												Temperatura
 											</div>
 											<div class = "col 6">
-												<?= $valorHumedad ?> 
+												<?php echo $valorHumedad . " C"?> 
 											</div>
 										</div>
 									</div>
@@ -304,20 +304,20 @@ include('calculoValorSemaforo.php');
 								</h2>
 								<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
 									<div class="accordion-body">
-										<div class = "row">
+									<div class = "row">
 											<div class = "col 6">
 												Fecha de medicion
 											</div>
 											<div class = "col 6">
-												<?= $fechaReciente ?> 
+												<? $fechaReciente ?> 
 											</div>
 										</div>
 										<div class = "row">
 											<div class = "col 6">
-												PM 2.5
+												PM 2.php echo5
 											</div>
 											<div class = "col 6">
-												<?= $valorPM25 ?> 
+												<?php echo $valorPM25 . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -325,7 +325,7 @@ include('calculoValorSemaforo.php');
 												PM 10
 											</div>
 											<div class = "col 6">
-												<?= $valorPM10 ?> 
+												<?php echo $valorPM10 . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -333,7 +333,7 @@ include('calculoValorSemaforo.php');
 												Monoxido de carbono
 											</div>
 											<div class = "col 6">
-												<?= $valorMonoxido ?> 
+												<?php echo $valorMonoxido . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -341,7 +341,7 @@ include('calculoValorSemaforo.php');
 												Nitrogeno
 											</div>
 											<div class = "col 6">
-												<?= $valorOzono ?> 
+												<?php echo $valorOzono . " ppm"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -349,7 +349,7 @@ include('calculoValorSemaforo.php');
 												Humedad
 											</div>
 											<div class = "col 6">
-												<?= $valorHumedad ?> 
+												<?php echo $valorHumedad . " %"?> 
 											</div>
 										</div>
 										<div class = "row">
@@ -357,7 +357,7 @@ include('calculoValorSemaforo.php');
 												Temperatura
 											</div>
 											<div class = "col 6">
-												<?= $valorHumedad ?> 
+												<?php echo $valorHumedad . " C"?> 
 											</div>
 										</div>
 									</div>
