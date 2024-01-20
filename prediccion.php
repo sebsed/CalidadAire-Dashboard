@@ -114,8 +114,8 @@ include('db/db-prediccion.php');
 
         <! colorear el semaforo y poner datos de indice–>
         <script>
-            let totalCalculado = "<?= $totalCalculado ?>";
-            let indiceCalidad = "<?= $indiceCalidad ?>";
+            let totalCalculado = "<?php echo $totalCalculado ?>";
+            let indiceCalidad = "<?php echo $indiceCalidad ?>";
             const descIndice1 = document.getElementById("descIndice1");
             const descIndice2 = document.getElementById("descIndice2");
             const tituloIndice = document.getElementById("tituloIndice");
